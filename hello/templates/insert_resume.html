@@ -1,0 +1,17 @@
+<h1>Add a Resume Fool!</h1>
+
+<form action="add_resume" method="POST">{% csrf_token %}
+
+E-mail:<br>
+<input type="email" name="email"><br><br>
+Upload Plain Text (.txt) Version of Resume (PDF coming soon but not now!):<br>
+<!--<input type="file" name="upload" accept="application/pdf,application/vnd.ms-excel" />-->
+<input type="file" name="resume" accept="text/plain" />
+<br><br>
+<input type="submit" value="Submit">
+
+</form>
+
+{{success}}
+
+

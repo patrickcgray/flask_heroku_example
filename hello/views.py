@@ -1,17 +1,35 @@
 import requests
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.template.context_processors import csrf
 
 from .models import Greeting
+from .models import Resume
 
-# Create your views here.
-#def index(request):
-#    return HttpResponse('Hello from Python!')
+
+# Create your views here
 
 def index(request):
     r = requests.get('http://httpbin.org/status/418')
     print r.text
     return HttpResponse('<pre>' + r.text + '</pre>')
+
+def insert_resume(request):
+	if request.method == 'GET':
+		context = {'success': 'no sire'}
+		return render(request, 'insert_resume.html', context)
+
+	elif request.method == 'POST':
+		email = request.POST.get("email", "")
+		resume_text = request.POST.get("resume", "")
+
+		context = {'success': email}
+		#need to add the file to the database
+		r = Resume(email=email, resume_text='testing')
+		r.save()
+
+		return render(request, 'insert_resume.html', context)
+
 
 def db(request):
 
