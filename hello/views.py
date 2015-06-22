@@ -25,7 +25,7 @@ def insert_resume(request):
 
 		context = {'success': email}
 		#need to add the file to the database
-		r = Resume(email=email, resume_text='testing')
+		r = Resume(email=email, resume_text=resume_text)
 		r.save()
 
 		return render(request, 'insert_resume.html', context)
