@@ -6,6 +6,9 @@ from django.template.context_processors import csrf
 from .models import Greeting
 from .models import Resume
 
+import logging
+logger = logging.getLogger('testlogger')
+
 
 # Create your views here
 
@@ -22,6 +25,9 @@ def insert_resume(request):
 	elif request.method == 'POST':
 		email = request.POST.get("email", "")
 		resume_text = request.POST.get("resume", "")
+
+		logger.info('This is a simple log message ayyyyyyy')
+		logger.info(resume_text)
 
 		context = {'success': email}
 		#need to add the file to the database
