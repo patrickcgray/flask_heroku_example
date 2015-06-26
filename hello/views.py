@@ -26,11 +26,11 @@ def insert_resume(request):
 		email = request.POST.get("email", "")
 		#resume_text = request.POST.get("resume", "")
 
-		file = request.FILES['resume']
-		file.name           # Gives name
-		file.content_type   # Gives Content type text/html etc
-		file.size           # Gives file's size in byte
-		resume_text = file.read()         # Reads file
+		this_file = request.FILES['resume']
+		logger.info(this_file.name)           # Gives name
+		logger.info(this_file.content_type)   # Gives Content type text/html etc
+		logger.info(this_file.size)           # Gives file's size in byte
+		resume_text = this_file.read()         # Reads file
 		#resume_text = "yoooo this is an awesome resume!!!"
 		resume_text = str(resume_text)
 
