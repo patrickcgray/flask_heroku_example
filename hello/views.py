@@ -32,6 +32,7 @@ def insert_resume(request):
 		file.size           # Gives file's size in byte
 		resume_text = file.read()         # Reads file
 		#resume_text = "yoooo this is an awesome resume!!!"
+		resume_text = str(resume_text)
 
 		logger.info('This is a simple log message ayyyyyyy')
 		logger.info(resume_text)
