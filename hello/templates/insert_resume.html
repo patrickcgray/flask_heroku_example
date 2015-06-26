@@ -1,6 +1,6 @@
 <h1>Add a Resume Fool!</h1>
 
-<form action="add_resume" method="POST">{% csrf_token %}
+<form action="add_resume" enctype="multipart/form-data" method="POST">{% csrf_token %}
 
 E-mail:<br>
 <input type="email" name="email"><br><br>

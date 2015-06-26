@@ -24,7 +24,13 @@ def insert_resume(request):
 
 	elif request.method == 'POST':
 		email = request.POST.get("email", "")
-		resume_text = request.POST.get("resume", "")
+		#resume_text = request.POST.get("resume", "")
+
+		file = request.FILES['resume']
+		file.name           # Gives name
+		file.content_type   # Gives Content type text/html etc
+		file.size           # Gives file's size in byte
+		resume_text = file.read()         # Reads file
 
 		logger.info('This is a simple log message ayyyyyyy')
 		logger.info(resume_text)
