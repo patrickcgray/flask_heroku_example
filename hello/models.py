@@ -6,5 +6,5 @@ class Greeting(models.Model):
 
 class Resume(models.Model):
     email = models.CharField(max_length=200)
-    resume_text = models.CharField(max_length=4000)
+    resume_text = models.TextField()
     when = models.DateTimeField('date created', auto_now_add=True)
