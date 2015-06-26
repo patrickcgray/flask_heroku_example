@@ -31,10 +31,9 @@ def insert_resume(request):
 		logger.info(this_file.name)           # Gives name
 		logger.info(this_file.content_type)   # Gives Content type text/html etc
 		logger.info(this_file.size)           # Gives file's size in byte
-		#resume_text = this_file.read()         # Reads file
+		resume_text = this_file.read()         # Reads file
 		#resume_text = "yoooo this is an awesome resume!!!"
-		resume_text = str("My interest was piqued when my good friend Hannah Kerner - who I worked with through undergraduate studies and SEDS-USA ? sent me the summary for the Director of Lunar Programs role. I read all I could find about the position and WayPaver Labs in general. I?m fascinated by your ambitious mission, would love to learn more, and think that WayPaver can make a major difference. I also think that my skills, experience,In addition to my space systems software engineering role I travel frequently to speak at and attend space related events. At conferences nationally and around the Bay Area I often find myself explaining the burgeoning commercial space industry to others. I love my current work and I have been evangelizing Moon Express for over a year as well as organizing SEDS events around the country. But in the last couple months I realized that I would like to more fully utilize this latter set of skills. I want to combine my engineering background and my abilitMy resume articulates the bulk of my experience but I would love to discuss, both here and in person.")
-
+		resume_text = str(resume_text)
 		logger.info('This is a simple log message ayyyyyyy')
 		logger.info(resume_text)
 
