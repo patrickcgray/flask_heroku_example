@@ -1,4 +1,5 @@
 import requests
+import time
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template.context_processors import csrf
@@ -40,6 +41,7 @@ def insert_resume(request):
 		context = {'success': email}
 		#need to add the file to the database
 		r = Resume(email=email, resume_text=resume_text)
+		time.sleep(4)
 		r.save()
 
 		return render(request, 'insert_resume.html', context)
