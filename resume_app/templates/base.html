@@ -28,7 +28,7 @@
         <div class="navbar-header">
 
           <a class="navbar-brand" href="/">
-            MoonEx E-Procs Tool
+            SEDS Resume Directory
           </a>
 
 
@@ -43,7 +43,7 @@
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Test Procedure List<b class="caret"></b></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Some Item<b class="caret"></b></a>
                 <ul class="dropdown-menu">
                    {% for test in tests_list %}                                 
                                 <li>
@@ -52,10 +52,10 @@
                             {% endfor %}
                 </ul>
             </li>
-            <li><a href="/create_procs">Create New Test</a></li>
+            <li><a href="/create_procs">Some Item</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="http://zoidberg.moonexpress.com:8090/display/MS/E-Procs+Tool">About</a></li>
+            <li><a href="">About</a></li>
           </ul>
         </div>
         <!--/.nav-collapse -->
@@ -65,15 +65,9 @@
 <br><br><br>
 
 		<div class="row">
-			<div class="col-md-3 col-md-offset-1" >
 
-                {% block left_column %}
-                {% endblock %}
-
-			</div>
-
-			<div class="col-md-7">
-				<div style="padding:5px">
+			<div class="col-md-12">
+				<div style="padding-left:20px">
 
                     {% block content %}
                     {% endblock %}

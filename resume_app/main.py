@@ -22,7 +22,7 @@ if not MONGO_URL:
 
 tmpl_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'templates')
 
-app = Flask(__name__, template_folder=tmpl_dir)
+app = Flask(__name__, template_folder=tmpl_dir, static_folder='static')
 
 app.config['MONGO_URI'] = MONGO_URL
 mongo = PyMongo(app)
@@ -40,7 +40,23 @@ mongo = PyMongo(app)
 def main():
 	if request.method == "GET":
 		return render_template('main.html')
-		#return "Hello, World!"
+	else:
+		pass
+
+@app.route('/add_resume', methods=['POST'])
+def add_resume():
+	if request.method == "POST":
+		email = request.form['email']
+		resume_text = request.form['resume']
+
+		mongo.db.resumes.insert(
+				{
+					"email" : email,
+					"resume_text" : resume_text,
+					"time_created" : datetime.now(),
+				})
+
+		return render_template('main.html')
 	else:
 		pass
 

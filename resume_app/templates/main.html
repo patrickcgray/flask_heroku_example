@@ -6,8 +6,14 @@
 
 {% block content %}
 
-
-Hello, world!
+Add a resume:
+<form action="/add_resume" method="POST">
+	<h4>Enter your email:</h4>
+	<input type="email" name="email"> <br><br>
+	<h4>Enter your resume in text form:</h4>
+	<textarea cols="75" name="resume"></textarea> <br><br>
+	<input type="submit" style="margin: 5px;" class="btn btn-primary">
+</form>
 
 {% endblock %}
 
