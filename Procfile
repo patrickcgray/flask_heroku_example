@@ -1,1 +1,1 @@
-web: gunicorn resume_app/main.py --log-file -
+web: python resume_app/main.py --log-file -
