@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block content %}
+
+<h4>Search for Resumes:</h4>
+<form action="/search" method="GET">
+	<h6>Enter keywords separated by a comma:</h6>
+	<input type="text" name="keywords"> <br>
+	<input type="submit" style="margin-top: 5px;" class="btn btn-primary">
+</form>
+
+{% if search_attempt %}
+	<h4>Results</h4>
+	{% if result_list %}
+		<ul>
+		{% for result in result_list %}
+		<li><a href="/resume_page/{{result['_id']}}">{{result['name']}}</a> - {{result['email']}}</li>
+		{% endfor %}
+		</ul>
+	{% else %}
+		<div class="alert alert-warning" role="alert">
+			<h5>No results match that search...</h5>
+		</div>
+	{% endif %}
+{% endif %}
+
+
+{% endblock %}
+
+{% block end_row %}
+
+
+{% endblock %}

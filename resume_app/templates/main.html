@@ -6,14 +6,22 @@
 
 {% block content %}
 
-Add a resume:
-<form action="/add_resume" method="POST">
-	<h4>Enter your email:</h4>
-	<input type="email" name="email"> <br><br>
-	<h4>Enter your resume in text form:</h4>
-	<textarea cols="75" name="resume"></textarea> <br><br>
-	<input type="submit" style="margin: 5px;" class="btn btn-primary">
-</form>
+{% if submission_success %}
+	<div class="alert alert-success">
+		<h4>You successfully submitted your resume!</h4>
+	</div>
+{% endif %}
+
+<h4>Welcome to the SEDS Resume Directory!</h4>
+
+<p>With this webapp you'll be able to: 
+<ul>
+	<li>search for a resume by keywords</li> 
+	<li>add your own resume to be found by potential employers, co-founders, friends</li>
+	<li>WAYYYY MOOOAARRR</li>
+</ul>
+
+<h5>Someone please add copy here. What do we want it to say/do?</h5>
 
 {% endblock %}
 

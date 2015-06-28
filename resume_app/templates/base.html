@@ -42,17 +42,8 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Some Item<b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                   {% for test in tests_list %}                                 
-                                <li>
-                                     <a href="/test_page/{{test['test_num']}}">{{test['test_name']}}</a>
-                                </li>
-                            {% endfor %}
-                </ul>
-            </li>
-            <li><a href="/create_procs">Some Item</a></li>
+            <li><a href="/add_resume">Add Resume</a></li>
+            <li><a href="/search">Search Directory</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="">About</a></li>
@@ -65,23 +56,22 @@
 <br><br><br>
 
 		<div class="row">
-
 			<div class="col-md-12">
-				<div style="padding-left:20px">
+				<div style="padding-left:20px; padding-right: 20px;">
 
-                    {% block content %}
-                    {% endblock %}
+            {% block content %}
+            {% endblock %}
 
-                </div>
-            </div>
         </div>
+      </div>
+    </div>
 
-        <div class="row">
-            <div class="col-md-12">
-                {% block end_row %}
-                {% endblock %}
-            </div>
+    <div class="row">
+        <div class="col-md-12">
+            {% block end_row %}
+            {% endblock %}
         </div>
+    </div>
 
     </body>
 </html>
