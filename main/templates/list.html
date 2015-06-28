@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block content %}
+
+<h4>Results</h4>
+{% if result_list %}
+	<ul>
+	{% for result in result_list %}
+	<li>Name: {{result['name']}} - Make: {{result['make']}} - Model: {{result['model']}} - Top Speed: {{result['top_speed']}}</li>
+	{% endfor %}
+	</ul>
+{% else %}
+	<div class="alert alert-warning" role="alert">
+		<h5>No results match that search...</h5>
+	</div>
+{% endif %}
+
+{% endblock %}
+
+{% block end_row %}
+
+{% endblock %}

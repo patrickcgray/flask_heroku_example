@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block content %}
+
+{% if submission_success %}
+	<div class="alert alert-success">
+		<h4>You successfully submitted your motorcycle!</h4>
+	</div>
+{% endif %}
+
+<h3>Welcome to the Heroku/Flask/Mongo Example App!</h3>
+
+<p>This is a super simple web app skeleton that shows how to:</p>
+<ul>
+	<li>structure a flask project with heroku</li> 
+	<li>do standard flask operations like routing and web app logic</li>
+	<li>do basic mongo operations like insertions and searches</li>
+	<li>use jinja2 templates</li>
+	<li>include twitter bootstrap in a project</li>
+</ul>
+</p>So add a motorcycle, search for one, or view a list of all entries!</p>
+
+{% endblock %}
+
+{% block end_row %}
+
+
+{% endblock %}

@@ -19,7 +19,7 @@ import json, subprocess, os, copy
 
 MONGO_URL = os.environ.get('MONGOLAB_URI')
 if not MONGO_URL:
-    MONGO_URL = "mongodb://localhost:27017/resume_app";
+    MONGO_URL = "mongodb://localhost:27017/vehicles";
 
 tmpl_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'templates')
 
@@ -40,16 +40,9 @@ mongo = PyMongo(app)
 def main():
 	if request.method == "GET":
 		submission_success = request.args.get('submission')
-		if submission_success == 'true':
-			submission_success = True
-		else:
-			submission_success = False
-
 		return render_template('main.html', submission_success=submission_success)
-	else:
-		pass
 
-@app.route('/add_resume', methods=['GET', 'POST'])
+@app.route('/add_motorcycle', methods=['GET', 'POST'])
 def add_resume():
 	if request.method == "GET":
 		error = request.args.get('error')
@@ -57,21 +50,22 @@ def add_resume():
 			error = True
 		else:
 			error = False
-		return render_template('add_resume.html', error=error)
+		return render_template('add_motorcycle.html', error=error)
 	elif request.method == "POST":
-		email = request.form['email']
-		resume_text = request.form['resume']
 		name = request.form['name']
-		#chapter = request.form['chapter']
+		make = request.form['make']
+		model = request.form['model']
+		top_speed = request.form['top_speed']
 
-		if not email or not name or not resume_text:
-			return redirect('/add_resume?error=true')
+		if not name or not make or not model or not top_speed:
+			return redirect('/add_motorcycle?error=true')
 
-		mongo.db.resumes.insert(
+		mongo.db.motorcycles.insert(
 				{
-					"email" : email,
 					"name" : name,
-					"resume_text" : resume_text,
+					"make" : make,
+					"model" : model,
+					"top_speed" : top_speed,
 					"time_created" : datetime.now(),
 				})
 
@@ -79,39 +73,34 @@ def add_resume():
 	else:
 		pass
 
-@app.route('/resume_page/<entry_id>', methods=['GET'])
-def resume_page(entry_id):
+@app.route('/list', methods=['GET', 'POST'])
+def list():
 	if request.method == "GET":
+		results = mongo.db.motorcycles.find()
+		result_list = []
 
-		result = mongo.db.resumes.find_one({"_id" : ObjectId(entry_id)})
-		print("ya this is the result")
-		print(entry_id)
-		print(result)
+		#iterating through results cursor and putting them into a python list
+		for result in results:
+			result_list.append(result)
 
-		return render_template('resume_page.html', result=result)
+		return render_template('list.html', result_list=result_list)
 	else:
 		pass
 
 @app.route('/search', methods=['GET', 'POST'])
 def search():
 	if request.method == "GET":
-		keywords = request.args.get('keywords')
+		make = request.args.get('make')
 		result_list = []
 		search_attempt = False
 
-		if keywords:
+		if make:
 			search_attempt = True
-			keyword_list = keywords.split(",")
-			final_keyword_list = []
-			for word in keyword_list:
-				final_keyword_list.append(word.rstrip().lstrip())
-			keyword_string = " ".join(final_keyword_list)
+			results = mongo.db.motorcycles.find({ "make" : make })
 
-			results = mongo.db.resumes.find({ "$text" : { "$search" : keyword_string } })
-
+			#iterating through results cursor and putting them into a python list
 			for result in results:
 				result_list.append(result)
-
 		else:
 			pass
 
@@ -123,7 +112,5 @@ def search():
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.debug = True
-    with app.app_context():
-    	mongo.db.resumes.ensure_index( [ ("resume_text" , "text") ] )
     app.run(host='0.0.0.0', port=port)
 

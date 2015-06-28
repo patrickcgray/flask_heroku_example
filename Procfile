@@ -1,1 +1,1 @@
-web: python resume_app/main.py --log-file -
+web: python main/main.py --log-file -
