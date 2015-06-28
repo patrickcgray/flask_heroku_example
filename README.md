@@ -17,6 +17,7 @@ $ python main/main.py
 Your app should now be running on [localhost:5000](http://localhost:5000/).
 
 ## Deploying to Heroku
+#### To function properly on heroku you will need to add [MongoLab](https://mongolab.com/)
 
 ```sh
 $ heroku create
@@ -26,12 +27,16 @@ $ heroku open
 
 ## Tech Stack
 Heroku
+
 Python
+
 Flask
+
 Mongodb
 
 ## How to Collaborate
 get the heroku toolbelt
+
 pull the project
 
 ## Code Structure:
@@ -46,7 +51,9 @@ pull the project
   		-contains the HTML templates used to display by main.py
 	
 
-Current Functionality
+## Current Functionality
 -user can submit a motorcycle
+
 -user can search for motorcycle by make
+
 -user can view a list of all current motorcycle entries
