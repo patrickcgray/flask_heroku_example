@@ -1,6 +1,6 @@
 # Flask/Heroku/Mongo Example App
 
-A barebones Python app using the Flask framework, which can easily be deployed to Heroku.
+A barebones Python app which can easily be deployed to Heroku. This app uses the Flask framework, MongoDB as the database engine, and includes basic sample functionality for both of those services.
 
 ## Running Locally
 
