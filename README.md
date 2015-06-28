@@ -48,11 +48,11 @@ use git
 		-python packages in use. this is used by heroku to build the environment
 	main/
   	    main.py
-  		    -all logic and functionality
+  	    	-all logic and functionality
   	    static/
-  		    -contains CSS and other static files
+  	    	-contains CSS and other static files
   	    templates/
-  	    	    -contains the HTML templates used to display by main.py
+  	    	-contains the HTML templates used to display by main.py
 	
 
 ## Current Functionality
