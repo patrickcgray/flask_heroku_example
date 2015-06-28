@@ -26,20 +26,13 @@ $ heroku open
 ```
 
 ## Tech Stack
-Heroku
+-Heroku
 
-Python
+-Python
 
-Flask
+-Flask
 
-Mongodb
-
-## How to Collaborate
-get the heroku toolbelt
-
-pull the project
-
-use git
+-Mongodb
 
 ## Code Structure:
 	Procfile
@@ -53,11 +46,3 @@ use git
   	    	-contains CSS and other static files
   	    templates/
   	    	-contains the HTML templates used to display by main.py
-	
-
-## Current Functionality
--user can submit a motorcycle
-
--user can search for motorcycle by make
-
--user can view a list of all current motorcycle entries
