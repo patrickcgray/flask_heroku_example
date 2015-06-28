@@ -10,14 +10,14 @@ Make sure you have Python [installed properly](http://install.python-guide.org).
 $ git clone https://github.com/patrickcgray/flask_heroku_example.git
 $ cd flask-heroku-example
 $ pip install -r requirements.txt
-$ # make sure that mongo is running by running the mongod command
+$ # make sure that mongo is installed and then running by running the mongod command
 $ python main/main.py
 ```
 
 Your app should now be running on [localhost:5000](http://localhost:5000/).
 
 ## Deploying to Heroku
-#### To function properly on heroku you will need to add [MongoLab](https://mongolab.com/)
+#### To function properly on heroku you will need to add [MongoLab](https://mongolab.com/) on your Heroku Dashboard
 
 ```sh
 $ heroku create
