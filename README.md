@@ -39,16 +39,20 @@ get the heroku toolbelt
 
 pull the project
 
+use git
+
 ## Code Structure:
+	Procfile
+		-this file has the command to have heroku run the python app
 	requirements.txt
 		-python packages in use. this is used by heroku to build the environment
 	main/
-  	main.py
-  		-all logic and functionality
-  	static/
-  		-contains CSS and other static files
-  	templates/
-  		-contains the HTML templates used to display by main.py
+  	    main.py
+  		    -all logic and functionality
+  	    static/
+  		    -contains CSS and other static files
+  	    templates/
+  	    	    -contains the HTML templates used to display by main.py
 	
 
 ## Current Functionality
