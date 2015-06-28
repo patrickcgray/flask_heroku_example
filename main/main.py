@@ -5,37 +5,40 @@ Created on June 27, 2015
 '''
 
 ######################################################
-################# initial setup ######################
+################ required imports ####################
 ######################################################
 
 from flask import Flask, redirect, render_template, request
 from flask.ext.pymongo import PyMongo
 from flask.ext.pymongo import ObjectId 
 from datetime import datetime
+import json, subprocess, os, copy
 
 from jinja2 import Environment, PackageLoader
 
-import json, subprocess, os, copy
+######################################################
+################# flask/mongo config #################
+######################################################
 
+# setting up the mongo environment to use the heroku MONGOLAB_URI environment variable or the local URL
 MONGO_URL = os.environ.get('MONGOLAB_URI')
 if not MONGO_URL:
     MONGO_URL = "mongodb://localhost:27017/vehicles";
 
+# setting up the template directory
 tmpl_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'templates')
 
 app = Flask(__name__, template_folder=tmpl_dir, static_folder='static')
 
+# configuring the mongo database with flask app
 app.config['MONGO_URI'] = MONGO_URL
 mongo = PyMongo(app)
-
-######################################################
-################# functions and db work ##############
-######################################################
 
 ######################################################
 ################# web app routes #####################
 ######################################################
 
+# for more information on Flask routing go to http://flask.pocoo.org/docs/0.10/quickstart/#routing
 @app.route('/', methods=['GET'])
 def main():
 	if request.method == "GET":
@@ -103,13 +106,14 @@ def search():
 				result_list.append(result)
 		else:
 			pass
-
 		return render_template('search.html', result_list=result_list, search_attempt=search_attempt)
 	else:
 		pass
 
-    
+
+#	instantiating the app
 if __name__ == "__main__":
+	# must run on the heroku designated port, or if there is no env variable it will run on port 5000 
     port = int(os.environ.get("PORT", 5000))
     app.debug = True
     app.run(host='0.0.0.0', port=port)
