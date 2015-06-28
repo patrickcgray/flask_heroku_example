@@ -52,12 +52,20 @@ def main():
 @app.route('/add_resume', methods=['GET', 'POST'])
 def add_resume():
 	if request.method == "GET":
-		return render_template('add_resume.html')
+		error = request.args.get('error')
+		if error == 'true':
+			error = True
+		else:
+			error = False
+		return render_template('add_resume.html', error=error)
 	elif request.method == "POST":
 		email = request.form['email']
 		resume_text = request.form['resume']
 		name = request.form['name']
 		#chapter = request.form['chapter']
+
+		if not email or not name or not resume_text:
+			return redirect('/add_resume?error=true')
 
 		mongo.db.resumes.insert(
 				{

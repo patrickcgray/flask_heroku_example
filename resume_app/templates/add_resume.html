@@ -6,7 +6,13 @@
 
 {% block content %}
 
-Add a resume:
+{% if error %}
+	<div class="alert alert-danger">
+		<h5>You must fill out all fields.</h5>
+	</div>
+{% endif %}
+
+<h3>Add a resume:</h3>
 <form action="/add_resume" method="POST">
 	<h4>Name:</h4>
 	<input type="name" name="name"> <br>
