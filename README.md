@@ -2,6 +2,8 @@
 
 A barebones Python app which can easily be deployed to Heroku. This app uses the Flask framework, MongoDB as the database engine, and includes basic sample functionality for both of those services.
 
+Live demo: [https://ancient-garden-9052.herokuapp.com/](https://ancient-garden-9052.herokuapp.com/)
+
 ## Running Locally
 
 Make sure you have Python [installed properly](http://install.python-guide.org).  Also, install the [Heroku Toolbelt](https://toolbelt.heroku.com/).
